@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
 }
@@ -14,10 +13,6 @@ body {
   font-family: "Trebuchet MS", sans-serif;
 }
 
-/* =========================
-   PÁGINA Y FONDO
-========================= */
-
 .pagina {
   position: relative;
   isolation: isolate;
@@ -28,8 +23,7 @@ body {
   background-color: #b9d9e9;
 }
 
-/* FONDO DEL CIELO */
-
+/* FONDO */
 .fondo {
   position: absolute;
   inset: 0;
@@ -40,10 +34,7 @@ body {
   background-repeat: no-repeat;
 }
 
-/* =========================
-   LETRAS
-========================= */
-
+/* LETRAS DEL TÍTULO */
 .letras {
   position: absolute;
   top: 10%;
@@ -57,49 +48,44 @@ body {
   pointer-events: none;
 }
 
-/* =========================
-   BOTÓN DEL PATO
-========================= */
-
+/* BOTÓN DEL PATO */
 .download {
   position: absolute;
   top: 78%;
   left: 50%;
+  transform: translate(-50%, -50%);
   display: block;
   width: 200px;
   max-width: 45vw;
   z-index: 2;
-
-  animation: patoFlotando 2.5s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .download img {
   display: block;
   width: 100%;
   height: auto;
+  animation: patoFlotando 2.5s ease-in-out infinite;
+  transform-origin: center;
 }
 
-/* CAMBIO DE IMAGEN SOLO EN PC CON MOUSE */
-
+/* CAMBIO DE IMAGEN SOLO EN PC */
 @media (hover: hover) and (pointer: fine) {
   .download:hover img {
     content: url("assets/duck.png");
-  }
-
-  .download:hover {
     filter: drop-shadow(0 5px 4px #0003);
   }
 }
 
-/* ANIMACIÓN DE GLOBO */
-
+/* ANIMACIÓN DEL PATO */
 @keyframes patoFlotando {
-  0%, 100% {
-    transform: translate(-50%, -50%) translateY(0);
+  0%,
+  100% {
+    transform: translateY(0);
   }
 
   50% {
-    transform: translate(-50%, -50%) translateY(-15px);
+    transform: translateY(-15px);
   }
 }
 
@@ -107,10 +93,7 @@ body {
   filter: brightness(0.96);
 }
 
-/* =========================
-   INSTAGRAM
-========================= */
-
+/* INSTAGRAM */
 .instagram {
   position: absolute;
   left: 5%;
@@ -143,10 +126,7 @@ body {
   font-size: 25px;
 }
 
-/* =========================
-   LOGO EVA
-========================= */
-
+/* LOGO EVA */
 .eva-logo {
   position: absolute;
   right: 5%;
@@ -173,10 +153,7 @@ body {
   transform: scale(0.97);
 }
 
-/* =========================
-   FOOTER
-========================= */
-
+/* CRÉDITO */
 .footer {
   position: absolute;
   left: 5%;
@@ -190,10 +167,7 @@ body {
   z-index: 2;
 }
 
-/* =========================
-   TABLETS
-========================= */
-
+/* TABLETS */
 @media (min-width: 601px) and (max-width: 900px) {
   .letras {
     width: 92%;
@@ -213,10 +187,7 @@ body {
   }
 }
 
-/* =========================
-   CELULARES
-========================= */
-
+/* CELULARES */
 @media (max-width: 600px) {
   .fondo {
     background-size: cover;
@@ -266,8 +237,7 @@ body {
   }
 }
 
-/* CELULARES PEQUEÑOS */
-
+/* CELULARES MUY CHICOS */
 @media (max-width: 360px) {
   .letras {
     top: 20%;
@@ -299,15 +269,14 @@ body {
   }
 }
 
-/* =========================
-   ACCESIBILIDAD
-========================= */
-
+/* RESPETAR LA CONFIGURACIÓN DE MOVIMIENTO DEL DISPOSITIVO */
 @media (prefers-reduced-motion: reduce) {
-  .download,
+  .download img {
+    animation: none;
+  }
+
   .instagram,
   .eva-logo {
-    animation: none;
     transition: none;
   }
 }
