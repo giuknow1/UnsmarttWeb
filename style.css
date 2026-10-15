@@ -23,15 +23,19 @@ body {
 .pagina {
   position: relative;
   isolation: isolate;
+
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
 
-  background-image: url("assets/CloudsBG_wLOGO%20-%20copia.png");
-  background-size: 100% 100%;
-  background-position: center top;
+  background-image:
+    url("assets/CloudsBG_wLOGO%20-%20copia.png");
+
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-color: #b9d9e9;
 }
 
 /* =========================
@@ -58,7 +62,9 @@ body {
 
 .download {
   position: absolute;
-  top: 72%;
+
+  /* Computadora */
+  top: 78%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -76,13 +82,10 @@ body {
 .download img {
   display: block;
   width: 100%;
-  max-width: 100%;
   height: auto;
-
-  transition: opacity 0.2s ease;
 }
 
-/* CAMBIAR IMAGEN AL PASAR EL CURSOR */
+/* CAMBIO DE IMAGEN AL PASAR EL CURSOR */
 
 .download:hover img {
   content: url("assets/duck.png");
@@ -104,7 +107,7 @@ body {
 .instagram {
   position: absolute;
   left: 5%;
-  bottom: 55px;
+  bottom: 24px;
 
   display: flex;
   align-items: center;
@@ -143,7 +146,7 @@ body {
 }
 
 /* =========================
-   BOTÓN EVA
+   LOGO EVA
 ========================= */
 
 .eva-logo {
@@ -205,24 +208,18 @@ body {
 ========================= */
 
 @media (min-width: 601px) and (max-width: 900px) {
-  .brand {
-    font-size: clamp(38px, 7vw, 60px);
-    letter-spacing: -2px;
-  }
-
   .download {
-    top: 68%;
+    top: 75%;
     width: 165px;
-    max-width: 35vw;
   }
 
   .instagram {
-    bottom: 55px;
+    bottom: 24px;
     font-size: 18px;
   }
 
   .eva-logo {
-    width: 90px;
+    width: 85px;
   }
 }
 
@@ -232,11 +229,13 @@ body {
 
 @media (max-width: 600px) {
   .pagina {
-    min-height: 100vh;
-    min-height: 100dvh;
-
-    background-size: 100% 100%;
+    /*
+      Mantiene las proporciones del fondo.
+      Puede dejar espacios libres arriba o abajo.
+    */
+    background-size: contain;
     background-position: center top;
+    background-repeat: no-repeat;
   }
 
   .brand {
@@ -249,22 +248,24 @@ body {
     text-shadow: 1px 3px 0 #5c4c00;
   }
 
-  /* PATO */
+  /* PATO: CENTRADO Y MÁS ABAJO */
 
   .download {
-    top: 65%;
+    top: 74%;
+    left: 50%;
+
     width: 135px;
     max-width: 42vw;
   }
 
-  /* INSTAGRAM */
+  /* INSTAGRAM: ESQUINA INFERIOR IZQUIERDA */
 
   .instagram {
     left: 5%;
-    bottom: 75px;
+    bottom: 24px;
 
     gap: 7px;
-    max-width: 62%;
+    max-width: 60%;
 
     font-size: clamp(13px, 3.8vw, 17px);
   }
@@ -279,7 +280,7 @@ body {
     font-size: 21px;
   }
 
-  /* EVA */
+  /* EVA: ESQUINA INFERIOR DERECHA */
 
   .eva-logo {
     right: 4%;
@@ -295,7 +296,7 @@ body {
     left: 5%;
     bottom: 12px;
 
-    max-width: 58%;
+    max-width: 55%;
     font-size: 9px;
   }
 }
@@ -311,12 +312,14 @@ body {
   }
 
   .download {
+    top: 74%;
     width: 120px;
     max-width: 40vw;
   }
 
   .instagram {
-    bottom: 72px;
+    left: 4%;
+    bottom: 24px;
     font-size: 12px;
   }
 
@@ -341,7 +344,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .download,
-  .download img,
   .instagram,
   .eva-logo {
     transition: none;
