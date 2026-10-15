@@ -29,9 +29,7 @@ body {
   min-height: 100dvh;
   overflow: hidden;
 
-  background-image:
-    url("assets/CloudsBG_wLOGO%20-%20copia.png");
-
+  background-image: url("assets/CloudsBG_wLOGO%20-%20copia.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -62,8 +60,6 @@ body {
 
 .download {
   position: absolute;
-
-  /* Computadora */
   top: 78%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -85,7 +81,7 @@ body {
   height: auto;
 }
 
-/* CAMBIO DE IMAGEN AL PASAR EL CURSOR */
+/* CAMBIAR IMAGEN AL PASAR EL CURSOR */
 
 .download:hover img {
   content: url("assets/duck.png");
@@ -209,12 +205,11 @@ body {
 
 @media (min-width: 601px) and (max-width: 900px) {
   .download {
-    top: 75%;
+    top: 76%;
     width: 165px;
   }
 
   .instagram {
-    bottom: 24px;
     font-size: 18px;
   }
 
@@ -230,11 +225,12 @@ body {
 @media (max-width: 600px) {
   .pagina {
     /*
-      Mantiene las proporciones del fondo.
-      Puede dejar espacios libres arriba o abajo.
+      Llena la pantalla sin estirar la imagen.
+      Puede recortar los bordes, pero no deja
+      franjas vacías arriba o abajo.
     */
-    background-size: contain;
-    background-position: center top;
+    background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
   }
 
@@ -251,11 +247,16 @@ body {
   /* PATO: CENTRADO Y MÁS ABAJO */
 
   .download {
-    top: 74%;
+    top: 80%;
     left: 50%;
+    transform: translate(-50%, -50%);
 
     width: 135px;
     max-width: 42vw;
+  }
+
+  .download:hover {
+    transform: translate(-50%, -52%) scale(1.02);
   }
 
   /* INSTAGRAM: ESQUINA INFERIOR IZQUIERDA */
@@ -265,7 +266,7 @@ body {
     bottom: 24px;
 
     gap: 7px;
-    max-width: 60%;
+    max-width: 58%;
 
     font-size: clamp(13px, 3.8vw, 17px);
   }
@@ -312,7 +313,7 @@ body {
   }
 
   .download {
-    top: 74%;
+    top: 80%;
     width: 120px;
     max-width: 40vw;
   }
