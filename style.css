@@ -3,39 +3,56 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   font-family: "Trebuchet MS", sans-serif;
 }
 
-
+/* =========================
+   PÁGINA Y FONDO
+========================= */
 
 .pagina {
   position: relative;
+  isolation: isolate;
   width: 100%;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
 
-  background-image: url("assets/CloudsBG_wLOGO\ -\ copia.png");
-  background-size: 100% 100vh;
-  background-position: top center;
+  background-image: url("assets/CloudsBG_wLOGO%20-%20copia.png");
+  background-size: cover;
+  background-position: center top;
   background-repeat: no-repeat;
 }
 
+/* =========================
+   MARCA / TEXTO PRINCIPAL
+========================= */
 
 .brand {
-  margin-left: -14px;
+  margin-left: 0;
+  max-width: 100%;
   font-size: clamp(30px, 6vw, 76px);
   font-weight: 900;
   font-style: italic;
-  letter-spacing: -3px;
+  letter-spacing: clamp(-3px, -0.2vw, -1px);
   color: #f5d500;
   -webkit-text-stroke: 1.5px #24200b;
   text-shadow: 2px 4px 0 #5c4c00;
+  overflow-wrap: anywhere;
 }
 
-/* BOTÓN CON TU IMAGEN */
+/* =========================
+   BOTÓN PRINCIPAL
+========================= */
 
 .download {
   position: absolute;
@@ -44,7 +61,9 @@ body {
   transform: translate(-50%, -50%);
 
   display: block;
-  width: 200px;
+  width: clamp(150px, 22vw, 250px);
+  max-width: 80%;
+  z-index: 2;
 
   transition:
     transform 0.3s ease,
@@ -59,11 +78,11 @@ body {
 }
 
 /* CAMBIAR IMAGEN AL PASAR EL CURSOR */
+
 .download:hover img {
   content: url("assets/duck.png");
 }
 
-/* MOVIMIENTO SUAVE */
 .download:hover {
   transform: translate(-50%, -52%) scale(1.02);
   filter: drop-shadow(0 5px 4px #0003);
@@ -73,31 +92,28 @@ body {
   transform: translate(-50%, -50%) scale(0.99);
 }
 
-/* EVITAR MOVIMIENTO SI SE PREFIERE */
-@media (prefers-reduced-motion: reduce) {
-  .download,
-  .download img {
-    transition: none;
-  }
-}
+/* =========================
+   INSTAGRAM
+========================= */
 
-/* INSTAGRAM */
 .instagram {
   position: absolute;
   left: 5%;
-  bottom: 4%;
+  bottom: 65px;
 
   display: flex;
   align-items: center;
   gap: 10px;
 
+  max-width: 65%;
   color: #171717;
   text-decoration: none;
-  font-size: 23px;
+  font-size: clamp(15px, 2vw, 23px);
   font-style: italic;
   font-weight: bold;
 
   transition: transform 0.25s ease;
+  z-index: 3;
 }
 
 .instagram:hover {
@@ -105,6 +121,7 @@ body {
 }
 
 .ig-icon {
+  flex-shrink: 0;
   width: 35px;
   height: 35px;
   border: 3px solid currentColor;
@@ -116,15 +133,24 @@ body {
   font-size: 25px;
 }
 
+/* =========================
+   LOGO EVA
+========================= */
 
-/* BOTÓN EVA */
 .eva-logo {
   position: absolute;
   right: 5%;
   bottom: 12px;
+
   display: block;
-  width: 120px;
-  transition: transform 0.25s ease, filter 0.25s ease;
+  width: clamp(75px, 12vw, 120px);
+  max-width: 25%;
+  z-index: 3;
+
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+
   cursor: pointer;
 }
 
@@ -143,61 +169,145 @@ body {
   transform: scale(0.97);
 }
 
+/* =========================
+   FOOTER
+========================= */
 
-
-
-/* FOOTER EN LA ESQUINA INFERIOR IZQUIERDA */
 .footer {
   position: absolute;
   left: 5%;
   bottom: 12px;
 
+  max-width: 65%;
   color: #315b72;
   font-size: 11px;
   opacity: 0.85;
-  white-space: nowrap;
   text-align: left;
+  overflow-wrap: anywhere;
   z-index: 2;
 }
 
+/* =========================
+   TABLETS
+========================= */
 
-/* CELULARES */
+@media (min-width: 601px) and (max-width: 900px) {
+  .pagina {
+    background-position: center top;
+  }
+
+  .download {
+    top: 70%;
+    width: clamp(170px, 28vw, 230px);
+  }
+
+  .instagram {
+    bottom: 60px;
+  }
+}
+
+/* =========================
+   CELULARES
+========================= */
+
 @media (max-width: 600px) {
-  .logo {
-    top: 23%;
+  .pagina {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    /*
+      El fondo llena la pantalla sin deformarse.
+      Puede recortarse un poco a los costados.
+    */
+    background-size: cover;
+    background-position: center center;
   }
 
   .brand {
-    letter-spacing: -2px;
+    font-size: clamp(28px, 9vw, 46px);
+    letter-spacing: -1.5px;
+    -webkit-text-stroke: 1px #24200b;
+    text-shadow: 1px 3px 0 #5c4c00;
   }
 
   .download {
     top: 65%;
-    width: min(70vw, 300px);
+    width: min(68vw, 270px);
+    max-width: 85%;
   }
 
+  /* En pantallas táctiles no dependemos del hover */
   .instagram {
     left: 5%;
-    bottom: 5%;
-    font-size: 18px;
+    bottom: 68px;
+    gap: 7px;
+    max-width: 65%;
+    font-size: clamp(14px, 4vw, 18px);
+  }
+
+  .ig-icon {
+    width: 29px;
+    height: 29px;
+    border-width: 2px;
+    border-radius: 8px;
+    font-size: 21px;
   }
 
   .eva-logo {
-    right: 3%;
-    bottom: 30px;
-    width: 85px;
+    right: 4%;
+    bottom: 12px;
+    width: clamp(65px, 19vw, 90px);
+    max-width: 25%;
   }
 
   .footer {
-    bottom: 10px;
-    font-size: 9px;
+    left: 5%;
+    bottom: 12px;
+    max-width: 60%;
+    font-size: clamp(8px, 2.5vw, 10px);
+    white-space: normal;
   }
 }
 
-/* ACCESIBILIDAD */
+/* =========================
+   CELULARES MUY ANGOSTOS
+========================= */
+
+@media (max-width: 360px) {
+  .brand {
+    font-size: 27px;
+    letter-spacing: -1px;
+  }
+
+  .download {
+    width: 65vw;
+  }
+
+  .instagram {
+    bottom: 72px;
+    font-size: 13px;
+  }
+
+  .ig-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 18px;
+  }
+
+  .footer {
+    font-size: 8px;
+  }
+}
+
+/* =========================
+   ACCESIBILIDAD
+========================= */
+
 @media (prefers-reduced-motion: reduce) {
   .download,
-  .instagram {
+  .download img,
+  .instagram,
+  .eva-logo {
     transition: none;
   }
 }
