@@ -205,7 +205,7 @@ body {
   }
 
   .letras {
-    top: 5%;
+    top: 20%;
     width: 96%;
     max-width: 100%;
   }
@@ -247,38 +247,8 @@ body {
   }
 }
 
-/* CELULARES PEQUEÑOS */
 
-@media (max-width: 360px) {
- .letras {
-  top: 12%;
-  width: 80%;
-  max-width: 100%;
-}
-  .download {
-    top: 76%;
-    width: 120px;
-    max-width: 40vw;
-  }
 
-  .instagram {
-    font-size: 12px;
-  }
-
-  .ig-icon {
-    width: 26px;
-    height: 26px;
-    font-size: 18px;
-  }
-
-  .eva-logo {
-    width: 62px;
-  }
-
-  .footer {
-    font-size: 8px;
-  }
-}
 
 /* ACCESIBILIDAD */
 
