@@ -1,62 +1,60 @@
 
-
 * {
   box-sizing: border-box;
 }
 
-html {
+html,
+body {
   width: 100%;
   min-height: 100%;
+  margin: 0;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  min-height: 100dvh;
   font-family: "Trebuchet MS", sans-serif;
 }
-
-/* =========================
-   PÁGINA Y FONDO
-========================= */
 
 .pagina {
   position: relative;
   isolation: isolate;
-
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
-
-  background-image: url("assets/CloudsBG_wLOGO%20-%20copia.png");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
   background-color: #b9d9e9;
 }
 
-/* =========================
-   MARCA / TÍTULO
-========================= */
+/* FONDO DEL CIELO */
 
-.brand {
-  margin-left: -14px;
-  max-width: 100%;
+.fondo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
 
-  font-size: clamp(30px, 6vw, 76px);
-  font-weight: 900;
-  font-style: italic;
-  letter-spacing: -3px;
-
-  color: #f5d500;
-  -webkit-text-stroke: 1.5px #24200b;
-  text-shadow: 2px 4px 0 #5c4c00;
+  background-image: url("assets/CloudsBG.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
-/* =========================
-   BOTÓN DEL PATO
-========================= */
+/* LETRAS INDEPENDIENTES */
+
+.letras {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: block;
+  width: min(65%, 650px);
+  height: auto;
+  object-fit: contain;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* BOTÓN DEL PATO */
 
 .download {
   position: absolute;
@@ -65,14 +63,11 @@ body {
   transform: translate(-50%, -50%);
 
   display: block;
-  width: 180px;
+  width: 200px;
   max-width: 45vw;
-
   z-index: 2;
 
-  transition:
-    transform 0.3s ease,
-    filter 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .download img {
@@ -80,8 +75,6 @@ body {
   width: 100%;
   height: auto;
 }
-
-/* CAMBIAR IMAGEN AL PASAR EL CURSOR */
 
 .download:hover img {
   content: url("assets/duck.png");
@@ -96,21 +89,18 @@ body {
   transform: translate(-50%, -50%) scale(0.99);
 }
 
-/* =========================
-   INSTAGRAM
-========================= */
+/* INSTAGRAM */
 
 .instagram {
   position: absolute;
   left: 5%;
-  bottom: 24px;
+  bottom: 30px;
 
   display: flex;
   align-items: center;
   gap: 10px;
 
   max-width: 60%;
-
   color: #171717;
   text-decoration: none;
   font-size: clamp(15px, 2vw, 23px);
@@ -118,7 +108,6 @@ body {
   font-weight: bold;
 
   z-index: 3;
-
   transition: transform 0.25s ease;
 }
 
@@ -128,7 +117,6 @@ body {
 
 .ig-icon {
   flex-shrink: 0;
-
   width: 35px;
   height: 35px;
 
@@ -137,13 +125,10 @@ body {
 
   display: grid;
   place-items: center;
-
   font-size: 25px;
 }
 
-/* =========================
-   LOGO EVA
-========================= */
+/* LOGO EVA */
 
 .eva-logo {
   position: absolute;
@@ -153,13 +138,9 @@ body {
   display: block;
   width: 100px;
   max-width: 25%;
-
   z-index: 3;
-  cursor: pointer;
 
-  transition:
-    transform 0.25s ease,
-    filter 0.25s ease;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .eva-logo img {
@@ -177,9 +158,7 @@ body {
   transform: scale(0.97);
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 .footer {
   position: absolute;
@@ -187,23 +166,22 @@ body {
   bottom: 12px;
 
   max-width: 55%;
-
   color: #315b72;
   font-size: 11px;
   opacity: 0.85;
 
-  white-space: normal;
   overflow-wrap: anywhere;
   text-align: left;
-
   z-index: 2;
 }
 
-/* =========================
-   TABLETS
-========================= */
+/* TABLETS */
 
 @media (min-width: 601px) and (max-width: 900px) {
+  .letras {
+    width: 92%;
+  }
+
   .download {
     top: 76%;
     width: 165px;
@@ -218,109 +196,72 @@ body {
   }
 }
 
-/* =========================
-   CELULARES
-========================= */
+/* CELULARES */
 
 @media (max-width: 600px) {
-  .pagina {
-    /*
-      Llena la pantalla sin estirar la imagen.
-      Puede recortar los bordes, pero no deja
-      franjas vacías arriba o abajo.
-    */
+  .fondo {
     background-size: cover;
     background-position: center center;
-    background-repeat: no-repeat;
   }
 
-  .brand {
-    margin-left: 0;
-
-    font-size: clamp(28px, 8vw, 44px);
-    letter-spacing: -1.5px;
-
-    -webkit-text-stroke: 1px #24200b;
-    text-shadow: 1px 3px 0 #5c4c00;
+  .letras {
+    top: 5%;
+    width: 96%;
+    max-width: 100%;
   }
-
-  /* PATO: CENTRADO Y MÁS ABAJO */
 
   .download {
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+    top: 76%;
     width: 135px;
     max-width: 42vw;
   }
 
-  .download:hover {
-    transform: translate(-50%, -52%) scale(1.02);
-  }
-
-  /* INSTAGRAM: ESQUINA INFERIOR IZQUIERDA */
-
   .instagram {
-    left: 5%;
+    left: 4%;
     bottom: 24px;
-
     gap: 7px;
     max-width: 58%;
-
     font-size: clamp(13px, 3.8vw, 17px);
   }
 
   .ig-icon {
     width: 29px;
     height: 29px;
-
     border-width: 2px;
     border-radius: 8px;
-
     font-size: 21px;
   }
-
-  /* EVA: ESQUINA INFERIOR DERECHA */
 
   .eva-logo {
     right: 4%;
     bottom: 12px;
-
     width: 72px;
     max-width: 23%;
   }
 
-  /* FOOTER */
-
   .footer {
-    left: 5%;
+    left: 4%;
     bottom: 12px;
-
     max-width: 55%;
     font-size: 9px;
   }
 }
 
-/* =========================
-   CELULARES PEQUEÑOS
-========================= */
+/* CELULARES PEQUEÑOS */
 
 @media (max-width: 360px) {
-  .brand {
-    font-size: 27px;
-    letter-spacing: -1px;
-  }
-
+ .letras {
+  top: 12%;
+  width: 80%;
+  max-width: 100%;
+}
   .download {
-    top: 80%;
+    top: 76%;
     width: 120px;
     max-width: 40vw;
   }
 
   .instagram {
-    left: 4%;
-    bottom: 24px;
     font-size: 12px;
   }
 
@@ -339,9 +280,7 @@ body {
   }
 }
 
-/* =========================
-   ACCESIBILIDAD
-========================= */
+/* ACCESIBILIDAD */
 
 @media (prefers-reduced-motion: reduce) {
   .download,
