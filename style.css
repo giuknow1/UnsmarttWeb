@@ -247,6 +247,17 @@ body {
   }
 }
 
+@media (hover: none), (pointer: coarse) {
+  .download:hover img {
+    content: none;
+  }
+
+  .download:hover {
+    transform: translate(-50%, -50%);
+    filter: none;
+  }
+}
+
 
 
 
