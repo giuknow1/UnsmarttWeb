@@ -247,14 +247,30 @@ body {
   }
 }
 
+
+/* MOVIMIENTO SUAVE DEL PATO EN CELULARES */
 @media (hover: none), (pointer: coarse) {
-  .download:hover img {
-    content: none;
+  .download {
+    animation: patoFlotando 2s ease-in-out infinite;
+    will-change: transform;
   }
 
   .download:hover {
-    transform: translate(-50%, -50%);
     filter: none;
+  }
+
+  .download:hover img {
+    content: none;
+  }
+}
+
+@keyframes patoFlotando {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateY(-10px);
   }
 }
 
