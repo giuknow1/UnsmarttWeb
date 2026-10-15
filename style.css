@@ -1,0 +1,203 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+
+
+.pagina {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+
+  background-image: url("assets/CloudsBG_wLOGO\ -\ copia.png");
+  background-size: 100% 100vh;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+
+.brand {
+  margin-left: -14px;
+  font-size: clamp(30px, 6vw, 76px);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -3px;
+  color: #f5d500;
+  -webkit-text-stroke: 1.5px #24200b;
+  text-shadow: 2px 4px 0 #5c4c00;
+}
+
+/* BOTÓN CON TU IMAGEN */
+
+.download {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: block;
+  width: 200px;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.download img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.2s ease;
+}
+
+/* CAMBIAR IMAGEN AL PASAR EL CURSOR */
+.download:hover img {
+  content: url("assets/duck.png");
+}
+
+/* MOVIMIENTO SUAVE */
+.download:hover {
+  transform: translate(-50%, -52%) scale(1.02);
+  filter: drop-shadow(0 5px 4px #0003);
+}
+
+.download:active {
+  transform: translate(-50%, -50%) scale(0.99);
+}
+
+/* EVITAR MOVIMIENTO SI SE PREFIERE */
+@media (prefers-reduced-motion: reduce) {
+  .download,
+  .download img {
+    transition: none;
+  }
+}
+
+/* INSTAGRAM */
+.instagram {
+  position: absolute;
+  left: 5%;
+  bottom: 4%;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #171717;
+  text-decoration: none;
+  font-size: 23px;
+  font-style: italic;
+  font-weight: bold;
+
+  transition: transform 0.25s ease;
+}
+
+.instagram:hover {
+  transform: translateY(-6px) rotate(-2deg);
+}
+
+.ig-icon {
+  width: 35px;
+  height: 35px;
+  border: 3px solid currentColor;
+  border-radius: 10px;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 25px;
+}
+
+
+/* BOTÓN EVA */
+.eva-logo {
+  position: absolute;
+  right: 5%;
+  bottom: 12px;
+  display: block;
+  width: 120px;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  cursor: pointer;
+}
+
+.eva-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.eva-logo:hover {
+  transform: scale(1.06);
+  filter: drop-shadow(0 4px 5px #0004);
+}
+
+.eva-logo:active {
+  transform: scale(0.97);
+}
+
+
+
+
+/* FOOTER EN LA ESQUINA INFERIOR IZQUIERDA */
+.footer {
+  position: absolute;
+  left: 5%;
+  bottom: 12px;
+
+  color: #315b72;
+  font-size: 11px;
+  opacity: 0.85;
+  white-space: nowrap;
+  text-align: left;
+  z-index: 2;
+}
+
+
+/* CELULARES */
+@media (max-width: 600px) {
+  .logo {
+    top: 23%;
+  }
+
+  .brand {
+    letter-spacing: -2px;
+  }
+
+  .download {
+    top: 65%;
+    width: min(70vw, 300px);
+  }
+
+  .instagram {
+    left: 5%;
+    bottom: 5%;
+    font-size: 18px;
+  }
+
+  .eva-logo {
+    right: 3%;
+    bottom: 30px;
+    width: 85px;
+  }
+
+  .footer {
+    bottom: 10px;
+    font-size: 9px;
+  }
+}
+
+/* ACCESIBILIDAD */
+@media (prefers-reduced-motion: reduce) {
+  .download,
+  .instagram {
+    transition: none;
+  }
+}
