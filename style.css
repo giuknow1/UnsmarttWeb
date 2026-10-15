@@ -210,11 +210,11 @@ body {
     max-width: 100%;
   }
 
-  .download {
-    top: 76%;
-    width: 135px;
-    max-width: 42vw;
-  }
+.download {
+  top: 76%;
+  width: 135px;
+  max-width: 42vw;
+}
 
   .instagram {
     left: 4%;
